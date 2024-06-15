@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-deployment
+  namespace: 3tier
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+        - name: nodejs-app
+          image: node:19-alpine3.16
+          command: ["sleep", "100000"]
